@@ -151,8 +151,8 @@ jobs:
           VERSION=${GITHUB_REF#refs/tags/}
           cd packages/cubejs-docker
           mkdir -p native-x64 native-arm64
-          gh release download "$VERSION" -p "native-linux-x64-glibc-fallback.tar.gz" -O - | tar xz -C native-x64
-          gh release download "$VERSION" -p "native-linux-arm64-glibc-fallback.tar.gz" -O - | tar xz -C native-arm64
+          gh release download "$VERSION" -p "native-linux-x64-glibc-3.11.tar.gz" -O - | tar xz -C native-x64
+          gh release download "$VERSION" -p "native-linux-arm64-glibc-3.11.tar.gz" -O - | tar xz -C native-arm64
       - name: Push to GHCR
         uses: docker/build-push-action@v6
         with:
