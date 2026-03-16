@@ -21,6 +21,16 @@ RUN yarn install --prod \
     && rm -rf /cube/node_modules/duckdb/src \
     && yarn cache clean
 
+# Override native binary with custom-built one from fork's release
+ARG TARGETARCH
+COPY native-x64/native/index.node /tmp/native-x64.node
+COPY native-arm64/native/index.node /tmp/native-arm64.node
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+      cp /tmp/native-x64.node /cube/node_modules/@cubejs-backend/native/index.node; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+      cp /tmp/native-arm64.node /cube/node_modules/@cubejs-backend/native/index.node; \
+    fi && rm /tmp/native-*.node
+
 FROM node:22.22.0-bookworm-slim
 
 ARG IMAGE_VERSION=unknown
