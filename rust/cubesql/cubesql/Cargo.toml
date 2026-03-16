@@ -10,7 +10,7 @@ homepage = "https://cube.dev"
 
 [dependencies]
 arc-swap = "1"
-datafusion = { git = 'https://github.com/cube-js/arrow-datafusion.git', rev = "03e683e5967b9fe60eece7e7d469d87621e25439", default-features = false, features = [
+datafusion = { git = 'https://github.com/raja-sudhan-8080/arrow-datafusion.git', rev = "72a966ed28cdb3590a742b20bd200766557558b2", default-features = false, features = [
     "regex_expressions",
     "unicode_expressions",
 ] }
